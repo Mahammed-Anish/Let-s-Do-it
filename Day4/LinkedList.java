@@ -41,11 +41,24 @@ public class LinkedList {
   }
 
   // add in the middle
-  // search iterative
-  // search recursive
-  // reverse linkedlist
-  // find & remove nth node from end
-  // check if ll is palindrome
+  public void add(int data, int idx) {
+    Node newNode = new Node(data);
+    size++;
+    if (idx == 0) {
+      addFirst(data);
+      return;
+    } else if (idx >= size) {
+      addLast(data);
+      return;
+    }
+
+    Node temp = head;
+    for (int i = 0; i < idx - 1; i++) {
+      temp = temp.next;
+    }
+    newNode.next = temp.next;
+    temp.next = newNode;
+  }
 
   public int removeFirst() {
     if (head == null) {
@@ -109,16 +122,19 @@ public class LinkedList {
     ll.addFirst(2);
     ll.addFirst(1);
     ll.print();
-    System.out.println(ll.size);
+    System.out.println(size);
     ll.addLast(4);
     ll.addLast(5);
     ll.print();
-    System.out.println(ll.size);
-    ll.removeFirst();
+    System.out.println(size);
+    // ll.removeFirst();
+    // ll.print();
+    // System.out.println(size);
+    // ll.removeLast();
+    // ll.print();
+    // System.out.println(size);
+    ll.addLast(7);
+    ll.add(6, 5);
     ll.print();
-    System.out.println(ll.size);
-    ll.removeLast();
-    ll.print();
-    System.out.println(ll.size);
   }
 }
